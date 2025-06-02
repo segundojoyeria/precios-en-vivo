@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Precios en Vivo - Oro, Plata & Bitcoin</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2748/2748558.png" type="image/png">
+</head>
+<body>
+  <div class="theme-toggle">
+    <i class="fas fa-moon"></i>
+    <i class="fas fa-sun"></i>
+  </div>
+
+  <button id="refresh-btn" class="refresh-button">
+    <i class="fas fa-sync-alt"></i> Actualizar
+  </button>
+
+  <div id="loader">
+    <div class="loader-spinner"></div>
+    <p>Cargando datos...</p>
+  </div>
+  
+  <div class="container">
+    <header>
+      <h1><i class="fas fa-coins"></i> La Referencia Del Precio en Vivo</h1>
+      <p class="last-update">Última actualización: <span id="hora-actualizacion">--:--:--</span></p>
+    </header>
+
+    <div class="price-cards">
+      <div class="card gold">
+        <div class="card-header">
+          <i class="fas fa-medal"></i>
+          <h2>Oro</h2>
+          <span class="unit">(por gramo)</span>
+        </div>
+        <div class="card-body">
+          <div class="price" id="precio-oro">Cargando...</div>
+          <div class="change" id="cambio-oro">--</div>
+          <div class="time" id="hora-oro">Actualizado: --</div>
+        </div>
+      </div>
+
+      <div class="card silver">
+        <div class="card-header">
+          <i class="fas fa-medal"></i>
+          <h2>Plata</h2>
+          <span class="unit">(por gramo)</span>
+        </div>
+        <div class="card-body">
+          <div class="price" id="precio-plata">Cargando...</div>
+          <div class="change" id="cambio-plata">--</div>
+          <div class="time" id="hora-plata">Actualizado: --</div>
+        </div>
+      </div>
+
+      <div class="card bitcoin">
+        <div class="card-header">
+          <i class="fab fa-bitcoin"></i>
+          <h2>Bitcoin</h2>
+          <span class="unit">(por unidad)</span>
+        </div>
+        <div class="card-body">
+          <div class="price" id="precio-bitcoin">Cargando...</div>
+          <div class="change" id="cambio-bitcoin">--</div>
+          <div class="time" id="hora-bitcoin">Actualizado: --</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chart-container">
+      <h2><i class="fas fa-chart-line"></i> Evolución de Precios (24h)</h2>
+      <div id="chart"></div>
+      <div class="chart-controls">
+        <button class="chart-btn active" data-range="24h">24H</button>
+        <button class="chart-btn" data-range="7d">7D</button>
+        <button class="chart-btn" data-range="30d">30D</button>
+      </div>
+    </div>
+
+    <div class="history-section">
+      <div class="section-header">
+        <h2><i class="fas fa-history"></i> Historial de Precios</h2>
+        <button id="clear-history" class="clear-btn">Limpiar historial</button>
+      </div>
+      <table id="historial-table">
+        <thead>
+          <tr>
+            <th>Hora</th>
+            <th>Oro (USD/g)</th>
+            <th>Plata (USD/g)</th>
+            <th>Bitcoin (USD)</th>
+          </tr>
+        </thead>
+        <tbody id="historial-body">
+          <tr>
+            <td colspan="4">Cargando historial...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="news-section">
+      <h2><i class="fas fa-newspaper"></i> Noticias Económicas</h2>
+      <div class="news-filter">
+        <button class="filter-btn active" data-category="business">General</button>
+        <button class="filter-btn" data-category="economy">Economía</button>
+        <button class="filter-btn" data-category="technology">Tecnología</button>
+      </div>
+      <div class="news-grid" id="lista-noticias">
+        <div class="news-card">
+          <div class="news-skeleton">
+            <div class="skeleton-img"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="news-skeleton">
+            <div class="skeleton-img"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="news-skeleton">
+            <div class="skeleton-img"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="disclaimer">
+      <p>Los precios mostrados son aproximados y pueden tener un retraso de hasta 5 minutos. No constituyen asesoramiento financiero.</p>
+    </div>
+  </div>
+
+  <div class="notification-container" id="notification-container"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
